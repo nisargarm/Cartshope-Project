@@ -1,0 +1,60 @@
+<app-back-button></app-back-button>
+<div class="reg">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="name">Name:</label>
+            <input id="name" formControlName="name" type="text" placeholder="Enter your Name"
+                [ngClass]="{ 'is-invalid': submitted && registerForm.controls['name'].invalid }" />
+            <div *ngIf="submitted && registerForm.controls['name'].errors" class="error-message">
+                <small *ngIf="registerForm.controls['name'].errors['required']">
+                    Name is required.
+                </small>
+            </div>
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" formControlName="email" type="email" placeholder="Enter your Email"
+                [ngClass]="{ 'is-invalid': submitted && registerForm.controls['email'].invalid }" />
+
+            <div *ngIf="submitted && registerForm.controls ['email'].errors" class="error-message">
+                <small *ngIf="registerForm.controls ['email'].errors['required']">
+                    Email is required.
+                </small>
+                <small *ngIf="registerForm.controls ['email'].errors['email']" class="error-message">
+                    Invalid email format.
+                </small>
+            </div>
+        </div>
+
+        <div>
+            <label for="password">Password:</label>
+            <input id="password" formControlName="password" type="password" placeholder="******"
+                [ngClass]="{ 'is-invalid': submitted && registerForm.controls['password'].invalid }" />
+            <div *ngIf="submitted && registerForm.controls['password'].errors" class="error-message">
+                <small *ngIf="registerForm.controls['password'].errors['required']">
+                    Password is required.
+                </small>
+            </div>
+        </div>
+
+        <div>
+            <label for="confirmPassword">Confirm Password:</label>
+            <input id="confirmPassword" formControlName="confirmPassword" type="password" placeholder="******"
+                [ngClass]="{ 'is-invalid': submitted && registerForm.controls['confirmPassword'].invalid }" />
+            <div *ngIf="submitted && registerForm.controls['confirmPassword'].errors" class="error-message">
+                <small *ngIf="registerForm.controls['confirmPassword'].errors['required']">
+                    Confirm password is required.
+                </small>
+                <small *ngIf="registerForm.controls['confirmPassword'].errors['mustMatch']">
+                    Passwords must match.
+                </small>
+            </div>
+        </div>
+
+        <button type="submit">Register</button>
+        <div class="sign-in-link">
+            <p>Already registered? <a routerLink="/sign-in">Sign in</a></p>
+        </div>
+
+    </form>

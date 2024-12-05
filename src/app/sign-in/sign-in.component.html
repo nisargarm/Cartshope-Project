@@ -1,0 +1,39 @@
+<app-back-button></app-back-button>
+<div class="form-container">
+  <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        formControlName="email"
+        type="email"
+        placeholder="Enter your email"
+        [ngClass]="{ 'is-invalid': submitted && (invalidEmail || signInForm.controls['email'].invalid) }"
+      />
+      <div *ngIf="submitted && signInForm.controls['email'].errors" class="error-message">
+        <small *ngIf="signInForm.controls['email'].errors['required']">Email is required.</small>
+        <small *ngIf="signInForm.controls['email'].errors['email']">Please enter a valid email address.</small>
+      </div>
+      <div *ngIf="invalidEmail" class="error-message">
+        <small>Incorrect email. Please try again.</small>
+      </div>
+    </div>
+
+    <div>
+      <label for="password">Password:</label>
+      <input
+        id="password"
+        formControlName="password"
+        type="password"
+        placeholder="Enter your password"
+        [ngClass]="{ 'is-invalid': submitted && (invalidPassword || signInForm.controls['password'].invalid) }"
+      />
+      <div *ngIf="submitted && signInForm.controls['password'].errors" class="error-message"> </div>
+      <div *ngIf="invalidPassword" class="error-message">
+        <small>Incorrect password. Please try again.</small>
+      </div>
+    </div>
+
+    <button type="submit">Sign In</button>
+  </form>
+</div>

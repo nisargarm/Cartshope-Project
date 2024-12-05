@@ -1,0 +1,64 @@
+ 
+
+
+
+
+   <div class="d-flex flex-column min-vh-100">
+     <div class="container d-flex flex-grow-1 justify-content-center align-items-center">
+      <div class="row w-100">
+        <div class="col-md-8 offset-md-2">
+          <div class="card">
+            <div class="card-header">
+              <h4>Order Feedback</h4>
+            </div>
+            <div class="card-body">
+              <form (ngSubmit)="onSubmit()" #feedbackForm="ngForm">
+                 <div class="form-group mb-3">
+                  <label for="rating">Rating (1-5):</label>
+                  <input
+                    type="number"
+                    id="rating"
+                    class="form-control"
+                    [(ngModel)]="feedback.rating"
+                    name="rating"
+                    min="1"
+                    max="5"
+                    required
+                    #rating="ngModel"
+                  />
+                  <div *ngIf="rating.invalid && rating.touched" class="text-danger">
+                    Rating is required and must be between 1 and 5.
+                  </div>
+                </div>
+  
+                <div class="form-group mb-3">
+                  <label for="comment">Comment:</label>
+                  <textarea
+                    id="comment"
+                    class="form-control"
+                    [(ngModel)]="feedback.comment"
+                    name="comment"
+                    rows="4"
+                    required
+                    #comment="ngModel"
+                  ></textarea>
+                  <div *ngIf="comment.invalid && comment.touched" class="text-danger">
+                    Comment is required.
+                  </div>
+                </div>
+  
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  [disabled]="feedbackForm.invalid"
+                >
+                  Submit Feedback
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

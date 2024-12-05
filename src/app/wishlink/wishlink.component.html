@@ -1,0 +1,23 @@
+<div class="content-wrapper">
+  <div class="container">
+    <app-back-button></app-back-button>     
+    <div *ngIf="wishlistedProducts.length > 0; else emptyWishlist">
+      <div *ngFor="let product of wishlistedProducts" style="margin-top: 30px; padding-left: 20px;">
+        <div class="product" style="margin-bottom: 20px;">
+          <div style="display: flex; flex-direction: column; align-items: flex-start;">
+            <img [src]="product.pdImg" alt="{{ product.pdName }}" style="width: 100px;">
+            <button (click)="removeFromWishlist(product.pdId)" class="btn btn-danger">Remove from Wishlist</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>   
+  <ng-template #emptyWishlist>
+    <div class="text-center fw-bold mt-5 p-5 bg-white">
+      <h5>Wishlist is empty.</h5>
+    </div>
+  </ng-template>
+
+   
+   
+</div>

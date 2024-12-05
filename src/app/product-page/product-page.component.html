@@ -1,0 +1,37 @@
+<app-navbar></app-navbar>
+<main class="container-fluid mt-5 mb-5">
+
+    <div class="row pageBox">
+
+        <div class="col-lg-4 col-12">
+
+            <p>Filter</p>
+            <p>Category: {{getParamValue | titlecase}}</p>
+            <p>Subcategory </p>
+            <div class="col-lg-4">
+                <select class="form-select form-select-sm" (change)="filterSelect($event)">
+                    <option value="all">All</option>
+                    <option *ngFor="let data of getSubCategoryOption" value="{{data.subcategories}}">
+                        {{data.subcategories}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-lg-8 col-12">
+            product content
+
+            <div class="row pageContent mt-5" *ngFor="let data of filterProductData">
+                <div class="col-lg-4 col-12 mt-3">
+                    <img src="{{data.pdImg}}">
+                </div>
+                <div class="col-lg-8 col-12 mt-5">
+                    <h4>{{data.pdName}}</h4>
+                    <p>{{data.pdDesc}}</p>
+                    <p><span class="fw-medium"><i class="bi bi-currency-rupee"></i></span> {{data.pdPrice | number}}</p>
+                    <a class="btn btn-sm btn-primary" [routerLink]="['/product-detail',data.pdCategory,data.pdId]">view
+                        product <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

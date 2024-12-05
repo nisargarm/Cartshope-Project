@@ -1,0 +1,23 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .content-wrapper {
+    min-height: 100vh;  
+    display: flex;
+    flex-direction: column; 
+  }
+  
+  .container {
+    flex: 1; 
+  }
+  
+  footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 1em;
+  }
+  
